@@ -1,7 +1,7 @@
 <html>
  <body>
 <?php
-$host = "db.tecnico.ulisboa.pt";
+$host = "db.ist.utl.pt";
 $user = "ist195137";
 $pass = "taec8707";
 $dsn = "mysql:host=$host;dbname=$user";
@@ -16,20 +16,14 @@ echo($exception->getMessage());
 echo("</p>");
 exit();
 }
-$VAT = $_REQUEST['VAT'];
-$name = $_REQUEST['name'];
-$birth_date = $_REQUEST['birth_date'];
-$street = $_REQUEST['street'];
-$city = $_REQUEST['city'];
-$zip = $_REQUEST['zip'];
-$gender = $_REQUEST['gender'];
-$age = 0;
 
-$sql = "INSERT INTO client VALUES ('$VAT', '$name', $birth_date, $street,
- $city, $zip, $gender, $age)";
+$VAT = $_REQUEST['VAT'];
+$date = $_REQUEST['date'];
+
+//search a doctor list - TO DO
+$sql = "SELECT * FROM doctor";
 echo("<p>$sql</p>");
 $nrows = $connection->exec($sql);
-echo("<p>Rows inserted: $nrows</p>");
  $connection = null;
 ?>
  </body>
