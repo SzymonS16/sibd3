@@ -16,7 +16,7 @@ echo($exception->getMessage());
 echo("</p>");
 exit();
 }
-$account_number = $_REQUEST['account_number'];
+$VAT = $_REQUEST['VAT'];
 $branch_name = $_REQUEST['branch_name'];
 $balance = $_REQUEST['balance'];
 $sql = "INSERT INTO account VALUES ('$account_number', '$branch_name', $balance)";
