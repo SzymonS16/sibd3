@@ -22,8 +22,14 @@ $date = $_REQUEST['date'];
 
 //search a doctor list - TO DO
 $sql = "SELECT * FROM doctor";
-echo("<p>$sql</p>");
-$nrows = $connection->exec($sql);
+$result = $connection->exec($sql);
+foreach($result as $row){
+    echo("<tr>\n");
+    echo("<td>{$row['VAT']}</td>\n");
+    echo("<td>{$row['name']}</td>\n");
+    echo("</tr>\n");
+}
+echo("</table>\n");
  $connection = null;
 ?>
  </body>

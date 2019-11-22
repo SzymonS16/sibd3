@@ -18,14 +18,62 @@
     echo("</p>");
     exit();
     }
-    
+
     $VAT = $_REQUEST['VAT'];
     $name = $_REQUEST['name'];
     $street = $_REQUEST['street'];
     $city = $_REQUEST['city'];
     $zip = $_REQUEST['zip'];
 
-    $sql = "SELECT * FROM client"; //sql TO DO
+    $where = "WHERE ";
+    $first = TRUE;
+
+    if(!empty($VAT)){
+        $where .= "vat = '$VAT'";
+        $first = FALSE;
+    }
+
+    if(!empty($name)){
+        if($first){
+            $where .= " name LIKE '%$name%'";
+            $first = FALSE;
+        }
+        else{
+            $where .= " and name LIKE '%$name%'"; 
+        }
+    }
+
+    if(!empty($street)){
+        if($first){
+            $where .= " street LIKE '%$street%'";
+            $first = FALSE;
+        }
+        else{
+            $where .= " and street LIKE '%$street%'";
+        }       
+    }
+
+    if(!empty($city)){
+        if($first){
+            $where .= " city LIKE '%$city%'";
+            $first = FALSE;
+        }
+        else{
+            $where .= " and city LIKE '%$city%'";
+        }
+    }
+
+    if(!empty($zip)){
+        if($first){
+            $where .= " zip LIKE '%$zip%'";
+            $first = FALSE;
+        }
+        else{
+            $where .= " and zip LIKE '%$zip%'";
+        }
+    }
+    
+    $sql = "SELECT * FROM client $where"; 
     $result = $connection->query($sql);
     if ($result == FALSE)
     {

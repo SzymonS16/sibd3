@@ -4,7 +4,7 @@
  <h3>Insert a new client</h3>
     <p>VAT: <input type="text" name="VAT"/></p>
     <p>name: <input type="text" name="name"/></p>
-    <p>birth_date: <input type="text" name="birth_date"/></p>
+    <p>birth_date: <input type="date" name="birth_date"/></p>
     <p>street: <input type="text" name="street"/></p>
     <p>city: <input type="text" name="city"/></p>
     <p>zip: <input type="text" name="zip"/></p>
