@@ -17,7 +17,7 @@ echo("</p>");
 exit();
 }
 $VAT = $_REQUEST['VAT'];
-$branch_name = $_REQUEST['branch_name'];
+$name = $_REQUEST['name'];
 $balance = $_REQUEST['balance'];
 $sql = "INSERT INTO account VALUES ('$account_number', '$branch_name', $balance)";
 echo("<p>$sql</p>");
