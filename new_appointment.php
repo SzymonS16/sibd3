@@ -14,41 +14,62 @@ value="<?=$_REQUEST['vat']?>"/></p>
 <?php 
     if(isset($_REQUEST['date'])){
         $date = $_REQUEST['date'];
-        $date = date("Y-m-d H:i:s", strtotime($date));
-
-        $host = "db.ist.utl.pt";
-        $user = "ist195137";
-        $pass = "taec8707";
-        $dsn = "mysql:host=$host;dbname=$user";
-        try
-        {
-        $connection = new PDO($dsn, $user, $pass);
-        }
-        catch(PDOException $exception)
-        {
-        echo("<p>Error: ");
-        echo($exception->getMessage());
-        echo("</p>");
-        exit();
-        }
-
-        $vat = $_REQUEST['vat'];
-
-        echo($date);
         
-        //search a doctor list - TO DO
-        $sql = "SELECT * FROM appointment where date_timestamp = '$date'";
-        $result = $connection->query($sql);
-        foreach($result as $row){
-            echo("<tr>\n");
-            echo("<td>{$row['vat_doctor']}</td>\n");
-            echo("<td>{$row['date_timestamp']}</td>\n");
-            echo("</tr>\n");
+        if(!empty($date)){
+            $time = date('H:i:s', strtotime($date));  
+            if(($time < date('H:i:s',strtotime("09:00:00"))) || ($time > date('H:i:s',strtotime("16:00:00")))){
+                echo('Clinic working hours: 9 AM - 5 PM, change time of appointment');
+            }
+
+            else{
+                $previous = date("Y-m-d H:i:s", strtotime('-1 hours', strtotime($date)));
+                $forward = date("Y-m-d H:i:s", strtotime('+1 hours', strtotime($date)));
+                $date = date("Y-m-d H:i:s", strtotime($date));
+                
+                $host = "db.ist.utl.pt";
+                $user = "ist195137";
+                $pass = "taec8707";
+                $dsn = "mysql:host=$host;dbname=$user";
+                try
+                {
+                $connection = new PDO($dsn, $user, $pass);
+                }
+                catch(PDOException $exception)
+                {
+                echo("<p>Error: ");
+                echo($exception->getMessage());
+                echo("</p>");
+                exit();
+                }
+
+                $vat = $_REQUEST['vat'];
+
+                //search a doctor list
+                $sql = "SELECT e.vat, e.name 
+                FROM employee as e 
+                LEFT JOIN(
+                    SELECT app.vat_doctor
+                    FROM appointment as app
+                    WHERE app.date_timestamp > '$previous' AND app.date_timestamp < '$forward') as ax
+                ON e.vat = ax.vat_doctor
+                WHERE ax.vat_doctor IS NULL";
+
+                $result = $connection->query($sql);
+                echo("<table>\n");
+                foreach($result as $row){
+                    echo("<tr>\n");
+                    echo("<td>{$row['vat']}</td>\n");
+                    echo("<td>{$row['name']}</td>\n");
+                    echo("</tr>\n");
+                }
+                echo("</table>\n");
+                $connection = null;
+            }
         }
-        echo("</table>\n");
-        $connection = null;
+        
+        else{
+            echo("Fill desire date of appointment!");
+        }
     }
-    else{
-        echo("Fill desire date of appointment!");
-    }
+    
 ?>
