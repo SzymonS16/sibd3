@@ -1,5 +1,9 @@
 <html>
  <body>
+
+
+
+
 <?php
 $host = "db.ist.utl.pt";
 $user = "ist195137";
@@ -34,3 +38,5 @@ echo("</table>\n");
 ?>
  </body>
 </html>
+
+
