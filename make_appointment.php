@@ -19,7 +19,7 @@
     exit();
     }
 
-    $VAT = $_REQUEST['VAT'];
+    $vat = $_REQUEST['vat'];
     $name = $_REQUEST['name'];
     $street = $_REQUEST['street'];
     $city = $_REQUEST['city'];
@@ -28,8 +28,8 @@
     $where = "WHERE ";
     $first = TRUE;
 
-    if(!empty($VAT)){
-        $where .= "vat = '$VAT'";
+    if(!empty($vat)){
+        $where .= "vat = '$vat'";
         $first = FALSE;
     }
 
@@ -87,10 +87,10 @@
         foreach($result as $row)
         {
         echo("<tr>\n");
-        echo("<td>{$row['VAT']}</td>\n");
+        echo("<td>{$row['vat']}</td>\n");
         echo("<td>{$row['name']}</td>\n");
-        echo("<td><a href=\"new_appointment.php?VAT=");
-        echo($row['VAT']);
+        echo("<td><a href=\"new_appointment.php?vat=");
+        echo($row['vat']);
         echo("\">Make appointment</a></td>\n");
         echo("</tr>\n");
         }

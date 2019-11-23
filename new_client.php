@@ -2,7 +2,7 @@
  <body>
  <form action="insert_client.php" method="post">
  <h3>Insert a new client</h3>
-    <p>VAT: <input type="text" name="VAT"/></p>
+    <p>vat: <input type="text" name="vat"/></p>
     <p>name: <input type="text" name="name"/></p>
     <p>birth_date: <input type="date" name="birth_date"/></p>
     <p>street: <input type="text" name="street"/></p>

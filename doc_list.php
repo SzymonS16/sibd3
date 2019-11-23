@@ -17,7 +17,7 @@ echo("</p>");
 exit();
 }
 
-$VAT = $_REQUEST['VAT'];
+$vat = $_REQUEST['vat'];
 $date = $_REQUEST['date'];
 
 //search a doctor list - TO DO
@@ -25,7 +25,7 @@ $sql = "SELECT * FROM doctor";
 $result = $connection->exec($sql);
 foreach($result as $row){
     echo("<tr>\n");
-    echo("<td>{$row['VAT']}</td>\n");
+    echo("<td>{$row['vat']}</td>\n");
     echo("<td>{$row['name']}</td>\n");
     echo("</tr>\n");
 }

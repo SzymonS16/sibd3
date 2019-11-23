@@ -2,7 +2,7 @@
  <body>
  <form action="make_appointment.php" method="post">
  <h3>Search a client</h3>
-    <p>VAT: <input type="text" name="VAT"/></p>
+    <p>vat: <input type="text" name="vat"/></p>
     <p>name: <input type="text" name="name"/></p>
     <p>street: <input type="text" name="street"/></p>
     <p>city: <input type="text" name="city"/></p>

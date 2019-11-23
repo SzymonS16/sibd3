@@ -16,7 +16,7 @@
         echo("</p>");
         exit();
         }
-        $VAT = $_REQUEST['VAT'];
+        $vat = $_REQUEST['vat'];
         $name = $_REQUEST['name'];
         $birth_date = $_REQUEST['birth_date'];
         $street = $_REQUEST['street'];
@@ -30,7 +30,7 @@
         ? ((date("Y") - $birthDate[2]) - 1)
         : (date("Y") - $birthDate[2]));
 
-        $sql = "INSERT INTO client VALUES ('$VAT', '$name', $birth_date, $street,
+        $sql = "INSERT INTO client VALUES ('$vat', '$name', $birth_date, $street,
         $city, $zip, $gender, $age)";
         echo("<p>$sql</p>");
         $nrows = $connection->exec($sql);
