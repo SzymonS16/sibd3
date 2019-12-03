@@ -25,13 +25,21 @@
         $gender = $_REQUEST['gender'];
 
         $birthDate = explode("-", $birth_date);
-        //get age from date or birthdate
-        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-        ? ((date("Y") - $birthDate[2]) - 1)
-        : (date("Y") - $birthDate[2]));
+        $td = date("Y-m-d");
+        $today = explode("-", $td);
 
-        $sql = "INSERT INTO client VALUES ('$vat', '$name', $birth_date, $street,
-        $city, $zip, $gender, $age)";
+        $age = $today[0] - $birthDate[0];
+
+        if(($birthDate[1] == $today[1]) && $birthDate[2] > $today[2]){
+            $age = $age - 1;
+        }
+
+        if($birthDate[1] > $today[1]){
+            $age = $age - 1;
+        }
+
+        $sql = "INSERT INTO client VALUES ('$vat', '$name', '$birth_date', '$street',
+        '$city', '$zip', '$gender', $age)";
         echo("<p>$sql</p>");
         $nrows = $connection->exec($sql);
         echo("<p>Rows inserted: $nrows</p>");

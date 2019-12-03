@@ -9,5 +9,6 @@
     <p>zip: <input type="text" name="zip"/></p>
  <p><input type="submit" value="Submit"/></p>
  </form>
+ <h1><a href="new_client.php">Create new client</a></h1>
  </body>
 </html>

@@ -8,7 +8,7 @@
     <p>street: <input type="text" name="street"/></p>
     <p>city: <input type="text" name="city"/></p>
     <p>zip: <input type="text" name="zip"/></p>
-    <p>gender: <input type="text" name=""/></p>
+    <p>gender: <input type="text" name="gender"/></p>
     <p><input type="submit" value="Submit"/></p>
  </form>
  </body>

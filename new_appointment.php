@@ -43,10 +43,15 @@ value="<?=$_REQUEST['vat']?>"/></p>
                 }
 
                 $vat = $_REQUEST['vat'];
+                $description = $_REQUEST['description'];
 
-                //search a doctor list
+                //search a doctor list tylko 1 2 3 4
                 $sql = "SELECT e.vat, e.name 
-                FROM employee as e 
+                FROM employee as e
+                INNER JOIN(
+	                SELECT doc.vat
+	                FROM doctor as doc) as docs
+                ON e.vat = docs.vat	
                 LEFT JOIN(
                     SELECT app.vat_doctor
                     FROM appointment as app
@@ -54,12 +59,32 @@ value="<?=$_REQUEST['vat']?>"/></p>
                 ON e.vat = ax.vat_doctor
                 WHERE ax.vat_doctor IS NULL";
 
+
                 $result = $connection->query($sql);
                 echo("<table>\n");
                 foreach($result as $row){
                     echo("<tr>\n");
                     echo("<td>{$row['vat']}</td>\n");
                     echo("<td>{$row['name']}</td>\n");
+                    
+
+                    echo("<td><form name=\"app\" action=\"insert_appointment.php\" method=\"post\">\n");
+                    
+                    echo("<p><input type=\"hidden\" name=\"vat_client\"\n");
+                    echo("value=\"{$vat}\"/></p>");
+                    
+                    echo("<p><input type=\"hidden\" name=\"vat_doctor\"\n");
+                    echo("value=\"{$row['vat']}\"/></p>");
+                    
+                    echo("<p><input type=\"hidden\" name=\"date_timestamp\"\n");
+                    echo("value=\"{$date}\"/></p>");
+                    
+                    echo("<p><input type=\"hidden\" name=\"description\"\n");
+                    echo("value=\"{$description}\"/></p>");
+                    
+                    echo("<p><input type=\"submit\" value=\"Make appointment\"/></p>");
+                    echo("</form></td>");
+                    
                     echo("</tr>\n");
                 }
                 echo("</table>\n");
