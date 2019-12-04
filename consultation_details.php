@@ -82,8 +82,10 @@
             echo("<tr>\n");
             echo("<th>vat_doctor</th>\n");
             echo("<th>date_timestamp</th>\n");
-            echo("<th>description</th>\n");
-            echo("<th>vat_client</th>\n");
+            echo("<th>soap_s</th>\n");
+            echo("<th>soap_o</th>\n");
+            echo("<th>soap_a</th>\n");
+            echo("<th>soap_p</th>\n");
             echo("</tr>\n");
             
             foreach($result_cons as $row)
@@ -91,8 +93,10 @@
             echo("<tr>\n");
             echo("<td>{$row['vat_doctor']}</td>\n");
             echo("<td>{$row['date_timestamp']}</td>\n");
-            echo("<td>{$row['description']}</td>\n");
-            echo("<td>{$row['vat_client']}</td>\n");
+            echo("<td>{$row['soap_s']}</td>\n");
+            echo("<td>{$row['soap_o']}</td>\n");
+            echo("<td>{$row['soap_a']}</td>\n");
+            echo("<td>{$row['soap_p']}</td>\n");
             echo("</tr>\n");
             }
             echo("</table>\n");
@@ -115,19 +119,13 @@
          if($result_cons_ass -> rowCount() > 0){
              echo("<table border=\"0\" cellspacing=\"5\">\n");
              echo("<tr>\n");
-             echo("<th>vat_doctor</th>\n");
-             echo("<th>date_timestamp</th>\n");
-             echo("<th>description</th>\n");
-             echo("<th>vat_client</th>\n");
+             echo("<th>vat_nurse</th>\n");
              echo("</tr>\n");
              
              foreach($result_cons_ass as $row)
              {
              echo("<tr>\n");
-             echo("<td>{$row['vat_doctor']}</td>\n");
-             echo("<td>{$row['date_timestamp']}</td>\n");
-             echo("<td>{$row['description']}</td>\n");
-             echo("<td>{$row['vat_client']}</td>\n");
+             echo("<td>{$row['vat_nurse']}</td>\n");
              echo("</tr>\n");
              }
              echo("</table>\n");
@@ -150,19 +148,13 @@
         if($result_cons_diag -> rowCount() > 0){
             echo("<table border=\"0\" cellspacing=\"5\">\n");
             echo("<tr>\n");
-            echo("<th>vat_doctor</th>\n");
-            echo("<th>date_timestamp</th>\n");
-            echo("<th>description</th>\n");
-            echo("<th>vat_client</th>\n");
+            echo("<th>id</th>\n");
             echo("</tr>\n");
             
             foreach($result_cons_diag as $row)
             {
             echo("<tr>\n");
-            echo("<td>{$row['vat_doctor']}</td>\n");
-            echo("<td>{$row['date_timestamp']}</td>\n");
-            echo("<td>{$row['description']}</td>\n");
-            echo("<td>{$row['vat_client']}</td>\n");
+            echo("<td>{$row['id']}</td>\n");
             echo("</tr>\n");
             }
             echo("</table>\n");
@@ -185,19 +177,19 @@
          if($result_presc -> rowCount() > 0){
              echo("<table border=\"0\" cellspacing=\"5\">\n");
              echo("<tr>\n");
-             echo("<th>vat_doctor</th>\n");
-             echo("<th>date_timestamp</th>\n");
+             echo("<th>name</th>\n");
+             echo("<th>lab</th>\n");
+             echo("<th>dosage</th>\n");
              echo("<th>description</th>\n");
-             echo("<th>vat_client</th>\n");
              echo("</tr>\n");
              
              foreach($result_presc as $row)
              {
              echo("<tr>\n");
-             echo("<td>{$row['vat_doctor']}</td>\n");
-             echo("<td>{$row['date_timestamp']}</td>\n");
+             echo("<td>{$row['name']}</td>\n");
+             echo("<td>{$row['lab']}</td>\n");
+             echo("<td>{$row['dosage']}</td>\n");
              echo("<td>{$row['description']}</td>\n");
-             echo("<td>{$row['vat_client']}</td>\n");
              echo("</tr>\n");
              }
              echo("</table>\n");

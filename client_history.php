@@ -37,6 +37,8 @@
             echo("<tr>\n");
             echo("<th>vat_doctor</th>\n");
             echo("<th>date_timestamp</th>\n");
+            
+            
             echo("<th>description</th>\n");
             echo("<th>vat_client</th>\n");
             echo("</tr>\n");
@@ -45,6 +47,14 @@
             echo("<tr>\n");
             echo("<td>{$row['vat_doctor']}</td>\n");
             echo("<td>{$row['date_timestamp']}</td>\n");
+            
+            echo("<td><a href=\"consultation_details.php?vat_doctor=");
+            echo($row['vat_doctor']);
+            echo("&date_timestamp=");
+            echo($row['date_timestamp']);
+            echo("\">Details</a></td>\n");
+            
+            
             echo("<td>{$row['description']}</td>\n");
             echo("<td>{$row['vat_client']}</td>\n");
             echo("</tr>\n");
@@ -60,6 +70,7 @@
             echo("<tr>\n");
             echo("<th>vat_doctor</th>\n");
             echo("<th>date_timestamp</th>\n");
+        
             echo("<th>soap_s</th>\n");
             echo("<th>soap_o</th>\n");
             echo("<th>soap_a</th>\n");
@@ -87,6 +98,14 @@
                     echo("<tr>\n");
                     echo("<td>{$roww['vat_doctor']}</td>\n");
                     echo("<td>{$roww['date_timestamp']}</td>\n");
+                    
+                    echo("<td><a href=\"consultation_details.php?vat_doctor=");
+                    echo($row['vat_doctor']);
+                    echo("&date_timestamp=");
+                    echo($row['date_timestamp']);
+                    echo("\">Details</a></td>\n");
+                    
+                    
                     echo("<td>{$roww['soap_s']}</td>\n");
                     echo("<td>{$roww['soap_o']}</td>\n");
                     echo("<td>{$roww['soap_a']}</td>\n");
