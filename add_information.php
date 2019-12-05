@@ -39,11 +39,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
         $vat_nurse = $row['vat'];
         $nurse_name = $row['name'];
-        echo("<option value=\"$vat_nurse\">$nurse_name</option>");
+        echo("<option value=\"$vat_nurse\">$vat_nurse: $nurse_name</option>");
         }
         $connection = null;
         ?>
@@ -77,11 +78,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
         $diag_id = $row['id'];
         $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        echo("<option value=\"$diag_id\">$diag_id: $diag_desc</option>");
         }
         $connection = null;
         ?>
@@ -114,11 +116,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
         $diag_id = $row['id'];
         $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        echo("<option value=\"$diag_id\">$diag_id: $diag_desc</option>");
         }
         $connection = null;
         ?>
@@ -151,11 +154,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
         $diag_id = $row['id'];
         $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        echo("<option value=\"$diag_id\">$diag_id: $diag_desc</option>");
         }
         $connection = null;
         ?>
@@ -181,7 +185,7 @@
         echo("</p>");
         exit();
         }
-        $sql = "SELECT * FROM diagnostic_code";
+        $sql = "SELECT * FROM medication";
         $result = $connection->query($sql);
         if ($result == FALSE)
         {
@@ -189,11 +193,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
-        $diag_id = $row['id'];
-        $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        $name = $row['name'];
+        $lab = $row['lab'];
+        echo("<option value=\"$name-$lab\">$name - $lab</option>");
         }
         $connection = null;
         ?>
@@ -220,7 +225,7 @@
         echo("</p>");
         exit();
         }
-        $sql = "SELECT * FROM diagnostic_code";
+        $sql = "SELECT * FROM medication";
         $result = $connection->query($sql);
         if ($result == FALSE)
         {
@@ -228,11 +233,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
-        $diag_id = $row['id'];
-        $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        $name = $row['name'];
+        $lab = $row['lab'];
+        echo("<option value=\"$name-$lab\">$name - $lab</option>");
         }
         $connection = null;
         ?>
@@ -259,7 +265,7 @@
         echo("</p>");
         exit();
         }
-        $sql = "SELECT * FROM diagnostic_code";
+        $sql = "SELECT * FROM medication";
         $result = $connection->query($sql);
         if ($result == FALSE)
         {
@@ -267,11 +273,12 @@
         echo("<p>Error: {$info[2]}</p>");
         exit();
         }
+        echo("<option value=\"\"></option>");
         foreach($result as $row)
         {
-        $diag_id = $row['id'];
-        $diag_desc = $row['description'];
-        echo("<option value=\"$diag_id\">$diag_desc</option>");
+        $name = $row['name'];
+        $lab = $row['lab'];
+        echo("<option value=\"$name-$lab\">$name - $lab</option>");
         }
         $connection = null;
         ?>
