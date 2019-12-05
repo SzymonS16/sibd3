@@ -59,6 +59,7 @@
     $measures[30] = $_REQUEST['lower_left_7'];
     $measures[31] = $_REQUEST['lower_left_8'];
 
+    $cond = true;
 
     $connection->beginTransaction();
 
@@ -75,10 +76,13 @@
         VALUES ('$procedure', '$vat_doctor', '$date_timestamp', $q, $no, '$description', $measures[$i])";        
         
         $result[$i] = $connection->exec($sql);
+
+        if(!($result[$i])){
+            $cond = false;
+        }
     }
 
-        //TO DO - warunki
-    if ($result1 and $result[0] and $result[10] and $result[16]) {
+    if ($result1 and $cond) {
         $connection->commit();
     }
     else {

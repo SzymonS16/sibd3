@@ -220,7 +220,6 @@
              echo("</table>\n");
          }
          else{
-             //TO DO - dodac opcje do wyboru procedury - nie wiem po co ale chca
             echo("<td><a href=\"dental_charting.php?vat_doctor=");
                     echo($row['vat_doctor']);
                     echo("&date_timestamp=");

@@ -54,6 +54,8 @@
     $dosage[2] = $_REQUEST['dosage_3'];
     $presc_description[2] = $_REQUEST['presc_description_3'];
 
+    $cond = true;
+
     $connection->beginTransaction();
 
     $sql_cons = "INSERT INTO consultation 
@@ -75,6 +77,9 @@
             $res_diag[$i] = $connection->exec($sql_cons_diag);
             echo($sql_cons_diag);
             echo("\n");
+            if(!($res_diag[$i])){
+                $cond = false;
+            }
         }
     }
 
@@ -85,10 +90,13 @@
             $res_pre[$i] = $connection->exec($sql_presc);
             echo($sql_presc);
             echo("\n");
+            if(!($res_pre[$i])){
+                $cond = false;
+            }
         }
     }
         //TO DO - warunki
-    if ($result1 and $result2 and $result3 and $result4 and false) {
+    if ($result1 and $result2 and $cond) {
         $connection->commit();
     }
     else {
