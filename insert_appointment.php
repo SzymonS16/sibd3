@@ -23,17 +23,11 @@
     $date_timestamp = $_REQUEST['date_timestamp'];
     $description = $_REQUEST['description'];
     
-    echo($vat_client);
-    echo($vat_doctor);
-    echo($date_timestamp);
-    echo($description); 
-
     $sql = "INSERT INTO appointment VALUES ('$vat_doctor', '$date_timestamp', '$description', '$vat_client')";
         echo("<p>$sql</p>");
         $nrows = $connection->exec($sql);
         echo("<p>Rows inserted: $nrows</p>");
         $connection = null;
-
     
 ?>
  </body>

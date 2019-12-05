@@ -18,12 +18,6 @@
     exit();
     }
 
-    /*procedure_in_consultation(name, vat_doctor, date_timestamp, description)*/
-
-    /*teeth(quadrant,number,name)*/
-
-    /*procedure_charting(name, vat_doctor, date_timestamp, quadrant, nmbr, descr, measure)*/
-
     $procedure = 'dental_charting';
     $vat_doctor = $_REQUEST['vat_doctor'];
     $date_timestamp = $_REQUEST['date_timestamp'];
@@ -71,32 +65,25 @@
     $sql_proc_in = "INSERT INTO procedure_in_consultation 
     VALUES ('$procedure', '$vat_doctor', '$date_timestamp', '$description')";
     
-    echo($sql_proc_in);
-    echo("\n");
-
     $result1 = $connection->exec($sql_proc_in);
-
-/*procedure_charting(name, vat_doctor, date_timestamp, quadrant, nmbr, descr, measure)*/
 
     for($i=0; $i < sizeof($measures); $i++){
         $q = intval($i / 8) + 1;
         $no = ($i % 8) + 1;
 
         $sql = "INSERT INTO procedure_charting 
-        VALUES ('$procedure', '$vat_doctor', '$date_timestamp', $q, $no, '$description', $measures[$i])";
-
-        echo($sql);
-        echo("\n");
+        VALUES ('$procedure', '$vat_doctor', '$date_timestamp', $q, $no, '$description', $measures[$i])";        
         
         $result[$i] = $connection->exec($sql);
     }
 
+        //TO DO - warunki
     if ($result1 and $result[0] and $result[10] and $result[16]) {
         $connection->commit();
     }
     else {
         $connection->rollBack();
-        echo("HUJ");
+        echo("Transaction aborted");
     }
     
 ?>

@@ -45,7 +45,7 @@ value="<?=$_REQUEST['vat']?>"/></p>
                 $vat = $_REQUEST['vat'];
                 $description = $_REQUEST['description'];
 
-                //search a doctor list tylko 1 2 3 4
+                //search a doctor list
                 $sql = "SELECT e.vat, e.name 
                 FROM employee as e
                 INNER JOIN(
@@ -67,7 +67,6 @@ value="<?=$_REQUEST['vat']?>"/></p>
                     echo("<td>{$row['vat']}</td>\n");
                     echo("<td>{$row['name']}</td>\n");
                     
-
                     echo("<td><form name=\"app\" action=\"insert_appointment.php\" method=\"post\">\n");
                     
                     echo("<p><input type=\"hidden\" name=\"vat_client\"\n");

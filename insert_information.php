@@ -18,14 +18,6 @@
     exit();
     }
 
-    /*consultation(VAT_doctor,date_timestamp,SOAP_S,SOAP_O,SOAP_A,SOAP_P)*/
-
-    /*consultation_assistant(VAT_doctor,date_timestamp,VAT_nurse)*/
-    
-    /*consultation_diagnostic(VAT_doctor,date_timestamp,ID)*/
-    
-    /*prescription(name,lab,VAT_doctor,date_timestamp,ID,dosage,description)*/
-
     $vat_doctor = $_REQUEST['vat_doctor'];
     $date_timestamp = $_REQUEST['date_timestamp'];
     
@@ -62,18 +54,17 @@
     $dosage[2] = $_REQUEST['dosage_3'];
     $presc_description[2] = $_REQUEST['presc_description_3'];
 
-
     $connection->beginTransaction();
 
     $sql_cons = "INSERT INTO consultation 
     VALUES ('$vat_doctor', '$date_timestamp', '$soap_s', '$soap_o', '$soap_a', '$soap_p')";
-    //$result1 = $connection->exec($sql_cons);
+    $result1 = $connection->exec($sql_cons);
     echo($sql_cons);
     echo("\n");
 
     $sql_cons_ass = "INSERT INTO consultation_assistant 
     VALUES ('$vat_doctor', '$date_timestamp', '$vat_nurse')";
-    //$result2 = $connection->exec($sql_cons_ass);
+    $result2 = $connection->exec($sql_cons_ass);
     echo($sql_cons_ass);
     echo("\n");
 
@@ -81,7 +72,7 @@
         if(!empty($diagnostic_id[$i])){
             $sql_cons_diag = "INSERT INTO consultation_diagnostic 
             VALUES ('$vat_doctor', '$date_timestamp', '$diagnostic_id[$i]')";
-            //$res_diag[$i] = $connection->exec($sql_cons_diag);
+            $res_diag[$i] = $connection->exec($sql_cons_diag);
             echo($sql_cons_diag);
             echo("\n");
         }
@@ -91,19 +82,18 @@
         if(!empty($name_lab[$i])){
             $sql_presc = "INSERT INTO prescription 
             VALUES ('$name[$i]', '$lab[$i]', '$vat_doctor', '$date_timestamp', '$diagnostic_id[$i]', '$dosage[$i]', '$presc_description[$i]')";
-            //$res_pre[$i] = $connection->exec($sql_presc);
+            $res_pre[$i] = $connection->exec($sql_presc);
             echo($sql_presc);
             echo("\n");
         }
     }
-
-
+        //TO DO - warunki
     if ($result1 and $result2 and $result3 and $result4 and false) {
         $connection->commit();
     }
     else {
         $connection->rollBack();
-        echo("CHUJ");
+        echo("Transaction aborted");
     }
     
 ?>

@@ -38,7 +38,6 @@
             echo("<th>vat_doctor</th>\n");
             echo("<th>date_timestamp</th>\n");
             
-            
             echo("<th>description</th>\n");
             echo("<th>vat_client</th>\n");
             echo("</tr>\n");
@@ -54,10 +53,10 @@
             echo($row['date_timestamp']);
             echo("\">Details</a></td>\n");
             
-            //TO DO - add information uzupełnienie ifa
             $vat_dr = $row['vat_doctor'];
             $dt_ts = $row['date_timestamp'];
 
+            //check if exists consultation for appointment
                 $sqll = "SELECT * FROM consultation WHERE vat_doctor = '$vat_dr' 
                 AND date_timestamp = '$dt_ts'
                 ORDER BY date_timestamp";

@@ -1,5 +1,4 @@
 <?php       
-        
         $vat_doctor =  $_REQUEST['vat_doctor'];
         $date_timestamp = $_REQUEST['date_timestamp'];
 
@@ -18,16 +17,7 @@
         echo("</p>");
         exit();
         }
-        
-
-        /*consultation_diagnostic(VAT_doctor,date_timestamp,ID)*/
-
-        /*consultation_assistant(VAT_doctor,date_timestamp,VAT_nurse)*/
-
-        /*prescription(name,lab,VAT_doctor,date_timestamp,ID,dosage,description)*/
-
-
-
+    
         /*APPOINTMENT*/
 
         $sql_app = "SELECT * FROM appointment WHERE vat_doctor = '$vat_doctor' AND date_timestamp = '$date_timestamp'";
@@ -208,8 +198,6 @@
          }
         
          echo("<h1>Procedure</h1>");
- 
-         //procedure_in_consultation(name,VAT_doctor,date_timestamp,description)
 
          if($result_proc -> rowCount() > 0){
              echo("<table border=\"0\" cellspacing=\"5\">\n");
@@ -232,7 +220,7 @@
              echo("</table>\n");
          }
          else{
-             //dodac opcje do wyboru procedury - nie wiem po co ale chca
+             //TO DO - dodac opcje do wyboru procedury - nie wiem po co ale chca
             echo("<td><a href=\"dental_charting.php?vat_doctor=");
                     echo($row['vat_doctor']);
                     echo("&date_timestamp=");
