@@ -209,21 +209,23 @@
         
          echo("<h1>Procedure</h1>");
  
+         //procedure_in_consultation(name,VAT_doctor,date_timestamp,description)
+
          if($result_proc -> rowCount() > 0){
              echo("<table border=\"0\" cellspacing=\"5\">\n");
              echo("<tr>\n");
              echo("<th>name</th>\n");
-             echo("<th>lab</th>\n");
-             echo("<th>dosage</th>\n");
+             echo("<th>vat_doctor</th>\n");
+             echo("<th>date_timestamp</th>\n");
              echo("<th>description</th>\n");
              echo("</tr>\n");
              
-             foreach($result_presc as $row)
+             foreach($result_proc as $row)
              {
              echo("<tr>\n");
              echo("<td>{$row['name']}</td>\n");
-             echo("<td>{$row['lab']}</td>\n");
-             echo("<td>{$row['dosage']}</td>\n");
+             echo("<td>{$row['vat_doctor']}</td>\n");
+             echo("<td>{$row['date_timestamp']}</td>\n");
              echo("<td>{$row['description']}</td>\n");
              echo("</tr>\n");
              }
