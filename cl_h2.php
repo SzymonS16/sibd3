@@ -55,29 +55,12 @@
             echo("\">Details</a></td>\n");
             
             //TO DO - add information uzupełnienie ifa
-            $vat_dr = $row['vat_doctor'];
-            $dt_ts = $row['date_timestamp'];
-
-                $sqll = "SELECT * FROM consultation WHERE vat_doctor = '$vat_dr' 
-                AND date_timestamp = '$dt_ts'
-                ORDER BY date_timestamp";
-                $cons = $connection->query($sqll);
-                
-                if ($cons == FALSE)
-                {
-                $info = $connection->errorInfo();
-                echo("<p>Error: {$info[2]}</p>");
-                exit();       
-                }
-                
-                if(!($cons -> rowCount() > 0)){
-                    echo("<td><a href=\"add_information.php?vat_doctor=");
-                    echo($row['vat_doctor']);
-                    echo("&date_timestamp=");
-                    echo($row['date_timestamp']);
-                    echo("\">Add information</a></td>\n");
-                }
- 
+            echo("<td><a href=\"add_information.php?vat_doctor=");
+            echo($row['vat_doctor']);
+            echo("&date_timestamp=");
+            echo($row['date_timestamp']);
+            echo("\">Add information</a></td>\n");
+            
             echo("<td>{$row['description']}</td>\n");
             echo("<td>{$row['vat_client']}</td>\n");
             echo("</tr>\n");
