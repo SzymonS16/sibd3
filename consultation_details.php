@@ -195,6 +195,49 @@
              echo("</table>\n");
          }
 
+         /*PROCEDURE*/
+
+         $sql_proc = "SELECT * FROM procedure_in_consultation WHERE vat_doctor = '$vat_doctor' AND date_timestamp = '$date_timestamp'";
+
+         $result_proc = $connection->query($sql_proc);
+         if ($result_proc == FALSE)
+         {
+         $info = $connection->errorInfo();
+         echo("<p>Error: {$info[2]}</p>");
+         exit();
+         }
+        
+         echo("<h1>Procedure</h1>");
+ 
+         if($result_proc -> rowCount() > 0){
+             echo("<table border=\"0\" cellspacing=\"5\">\n");
+             echo("<tr>\n");
+             echo("<th>name</th>\n");
+             echo("<th>lab</th>\n");
+             echo("<th>dosage</th>\n");
+             echo("<th>description</th>\n");
+             echo("</tr>\n");
+             
+             foreach($result_presc as $row)
+             {
+             echo("<tr>\n");
+             echo("<td>{$row['name']}</td>\n");
+             echo("<td>{$row['lab']}</td>\n");
+             echo("<td>{$row['dosage']}</td>\n");
+             echo("<td>{$row['description']}</td>\n");
+             echo("</tr>\n");
+             }
+             echo("</table>\n");
+         }
+         else{
+             //dodac opcje do wyboru procedury - nie wiem po co ale chca
+            echo("<td><a href=\"dental_charting.php?vat_doctor=");
+                    echo($row['vat_doctor']);
+                    echo("&date_timestamp=");
+                    echo($row['date_timestamp']);
+                    echo("\">Add procedure</a></td>\n");
+         }
+
          $connection = null;
 
 ?>
