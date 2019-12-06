@@ -19,61 +19,72 @@
     exit();
     }
 
-    $vat = $_REQUEST['vat'];
-    $name = $_REQUEST['name'];
-    $street = $_REQUEST['street'];
-    $city = $_REQUEST['city'];
-    $zip = $_REQUEST['zip'];
-
-    $where = "WHERE ";
-    $first = TRUE;
-
-    if(!empty($vat)){
-        $where .= "vat = '$vat'";
-        $first = FALSE;
+    if((empty($_REQUEST['vat']))
+    && (empty($_REQUEST['name']))
+    && (empty($_REQUEST['street']))
+    && (empty($_REQUEST['city']))
+    && (empty($_REQUEST['zip'])))
+    {
+        $sql = "SELECT * FROM client"; 
     }
+    else{
+        $vat = $_REQUEST['vat'];
+        $name = $_REQUEST['name'];
+        $street = $_REQUEST['street'];
+        $city = $_REQUEST['city'];
+        $zip = $_REQUEST['zip'];
 
-    if(!empty($name)){
-        if($first){
-            $where .= " name LIKE '%$name%'";
+        $where = "WHERE ";
+        $first = TRUE;
+
+        if(!empty($vat)){
+            $where .= "vat = '$vat'";
             $first = FALSE;
         }
-        else{
-            $where .= " and name LIKE '%$name%'"; 
-        }
-    }
 
-    if(!empty($street)){
-        if($first){
-            $where .= " street LIKE '%$street%'";
-            $first = FALSE;
+        if(!empty($name)){
+            if($first){
+                $where .= " name LIKE '%$name%'";
+                $first = FALSE;
+            }
+            else{
+                $where .= " and name LIKE '%$name%'"; 
+            }
         }
-        else{
-            $where .= " and street LIKE '%$street%'";
-        }       
-    }
 
-    if(!empty($city)){
-        if($first){
-            $where .= " city LIKE '%$city%'";
-            $first = FALSE;
+        if(!empty($street)){
+            if($first){
+                $where .= " street LIKE '%$street%'";
+                $first = FALSE;
+            }
+            else{
+                $where .= " and street LIKE '%$street%'";
+            }       
         }
-        else{
-            $where .= " and city LIKE '%$city%'";
-        }
-    }
 
-    if(!empty($zip)){
-        if($first){
-            $where .= " zip LIKE '%$zip%'";
-            $first = FALSE;
+        if(!empty($city)){
+            if($first){
+                $where .= " city LIKE '%$city%'";
+                $first = FALSE;
+            }
+            else{
+                $where .= " and city LIKE '%$city%'";
+            }
         }
-        else{
-            $where .= " and zip LIKE '%$zip%'";
+
+        if(!empty($zip)){
+            if($first){
+                $where .= " zip LIKE '%$zip%'";
+                $first = FALSE;
+            }
+            else{
+                $where .= " and zip LIKE '%$zip%'";
+            }
         }
+        
+        $sql = "SELECT * FROM client $where"; 
     }
     
-    $sql = "SELECT * FROM client $where"; 
     $result = $connection->query($sql);
     if ($result == FALSE)
     {

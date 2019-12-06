@@ -95,9 +95,10 @@
             }
         }
     }
-        //TO DO - warunki
+        
     if ($result1 and $result2 and $cond) {
         $connection->commit();
+        echo("Operation succeeed");
     }
     else {
         $connection->rollBack();

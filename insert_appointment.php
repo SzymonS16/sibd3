@@ -28,6 +28,18 @@
         $nrows = $connection->exec($sql);
         echo("<p>Rows inserted: $nrows</p>");
         $connection = null;
+
+        if($nrows > 0){
+            echo("<p><a href=\"consultation_details.php?vat_doctor=");
+            echo($vat_doctor);
+            echo("&date_timestamp=");
+            echo($date_timestamp);
+            echo("\">Appointment details</a></p>\n");
+        }
+        else{
+            echo("Operation refused");
+        }
+        
     
 ?>
  </body>

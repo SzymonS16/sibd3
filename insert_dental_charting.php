@@ -84,6 +84,7 @@
 
     if ($result1 and $cond) {
         $connection->commit();
+        echo("Operation succeeed");
     }
     else {
         $connection->rollBack();
