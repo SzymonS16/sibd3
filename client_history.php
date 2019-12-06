@@ -69,16 +69,18 @@
                 exit();       
                 }
                 
-                if(!($cons -> rowCount() > 0)){
-                    echo("<td><a href=\"add_information.php?vat_doctor=");
-                    echo($row['vat_doctor']);
-                    echo("&date_timestamp=");
-                    echo($row['date_timestamp']);
-                    echo("\">Add information</a></td>\n");
-                }
- 
+                
             echo("<td>{$row['description']}</td>\n");
             echo("<td>{$row['vat_client']}</td>\n");
+
+            if(!($cons -> rowCount() > 0)){
+                echo("<td><a href=\"add_information.php?vat_doctor=");
+                echo($row['vat_doctor']);
+                echo("&date_timestamp=");
+                echo($row['date_timestamp']);
+                echo("\">Add information</a></td>\n");
+            }
+
             echo("</tr>\n");
 
             $doctor[$i] = $row['vat_doctor'];
@@ -127,11 +129,11 @@
                     echo($row['date_timestamp']);
                     echo("\">Details</a></td>\n");
                     
-                    
-                    echo("<td>{$roww['soap_s']}</td>\n");
-                    echo("<td>{$roww['soap_o']}</td>\n");
-                    echo("<td>{$roww['soap_a']}</td>\n");
-                    echo("<td>{$roww['soap_p']}</td>\n");
+                    //information will be shown on details page
+                    //echo("<td>{$roww['soap_s']}</td>\n");
+                    //echo("<td>{$roww['soap_o']}</td>\n");
+                    //echo("<td>{$roww['soap_a']}</td>\n");
+                    //echo("<td>{$roww['soap_p']}</td>\n");
                     echo("</tr>\n");
                     }  
                 }
