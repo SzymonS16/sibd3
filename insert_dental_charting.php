@@ -18,10 +18,12 @@
     exit();
     }
 
-    $procedure = 'dental_charting';
+    $procedure = 'dental charting';
     $vat_doctor = $_REQUEST['vat_doctor'];
     $date_timestamp = $_REQUEST['date_timestamp'];
-    $description = $_REQUEST['description'];
+    //$description = $_REQUEST['description'];
+    $description = 'dental charting procedure';
+    $dc_desc = 'dc';
 
     $measures[0] = $_REQUEST['upper_right_1'];
     $measures[1] = $_REQUEST['upper_right_2'];
@@ -65,7 +67,7 @@
 
     $sql_proc_in = "INSERT INTO procedure_in_consultation 
     VALUES ('$procedure', '$vat_doctor', '$date_timestamp', '$description')";
-    
+
     $result1 = $connection->exec($sql_proc_in);
 
     for($i=0; $i < sizeof($measures); $i++){
@@ -73,8 +75,8 @@
         $no = ($i % 8) + 1;
 
         $sql = "INSERT INTO procedure_charting 
-        VALUES ('$procedure', '$vat_doctor', '$date_timestamp', $q, $no, '$description', $measures[$i])";        
-        
+        VALUES ('$procedure', '$vat_doctor', '$date_timestamp', $q, $no, '$dc_desc', $measures[$i])";        
+     
         $result[$i] = $connection->exec($sql);
 
         if(!($result[$i])){
