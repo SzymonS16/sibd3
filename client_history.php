@@ -47,12 +47,6 @@
             echo("<td>{$row['vat_doctor']}</td>\n");
             echo("<td>{$row['date_timestamp']}</td>\n");
             
-            echo("<td><a href=\"consultation_details.php?vat_doctor=");
-            echo($row['vat_doctor']);
-            echo("&date_timestamp=");
-            echo($row['date_timestamp']);
-            echo("\">Details</a></td>\n");
-            
             $vat_dr = $row['vat_doctor'];
             $dt_ts = $row['date_timestamp'];
 
@@ -68,10 +62,15 @@
                 echo("<p>Error: {$info[2]}</p>");
                 exit();       
                 }
-                
-                
+                     
             echo("<td>{$row['description']}</td>\n");
             echo("<td>{$row['vat_client']}</td>\n");
+
+            echo("<td><a href=\"consultation_details.php?vat_doctor=");
+            echo($row['vat_doctor']);
+            echo("&date_timestamp=");
+            echo($row['date_timestamp']);
+            echo("\">Details</a></td>\n");
 
             if(!($cons -> rowCount() > 0)){
                 echo("<td><a href=\"add_information.php?vat_doctor=");
@@ -94,11 +93,12 @@
             echo("<tr>\n");
             echo("<th>vat_doctor</th>\n");
             echo("<th>date_timestamp</th>\n");
-        
-            echo("<th>soap_s</th>\n");
-            echo("<th>soap_o</th>\n");
-            echo("<th>soap_a</th>\n");
-            echo("<th>soap_p</th>\n");
+            
+            //information will be shown on details page
+            //echo("<th>soap_s</th>\n");
+            //echo("<th>soap_o</th>\n");
+            //echo("<th>soap_a</th>\n");
+            //echo("<th>soap_p</th>\n");
             echo("</tr>\n");
             $cons_set = FALSE;
 
